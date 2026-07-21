@@ -50,7 +50,7 @@ jobs:
       - test
       - runmigrations
       - checkmigrations
-   #if: github.ref == 'refs/head/main'
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: read
       packages: write
@@ -67,6 +67,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker meta
+        id: meta
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/YWRBSB/catalog
