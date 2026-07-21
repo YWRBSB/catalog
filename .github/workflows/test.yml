@@ -42,7 +42,31 @@ jobs:
       - uses: ./.github/actions/install-dependecies
 
       - name: Run django migrations 
-        run: python manage.py makemigrations --check           
+        run: python manage.py makemigrations --check
+        
+  build-docker-image:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+      - runmigrations
+      - checkmigrations
+    if: github.ref == 'refs/head/main'
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    steps:  
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+            
 
     
 
