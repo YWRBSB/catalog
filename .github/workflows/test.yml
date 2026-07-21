@@ -50,7 +50,7 @@ jobs:
       - test
       - runmigrations
       - checkmigrations
-    if: github.ref == 'refs/head/main'
+   #if: github.ref == 'refs/head/main'
     permissions:
       contents: read
       packages: write
