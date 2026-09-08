@@ -1,28 +1,18 @@
 {
-    "branches": [
-        "main"
-    ],
+    "branches": ["main"],
     "plugins": [
-       [
+        [
             "@semantic-release/commit-analyzer",
-            {
-                "preset": "conventionalcommits",
-            }
+            { "preset": "conventionalcommits" }
         ],
         [
             "@semantic-release/release-notes-generator",
-            {
-                "preset": "conventionalcommits"
-            }
+            { "preset": "conventionalcommits" }
         ],
         [
             "@semantic-release/changelog",
-            {
-                "changelogFile": "CHANGELOG.md"
-            }
+            { "changelogFile": "CHANGELOG.md" }
         ],
-      
-            
         [
             "@semantic-release/git",
             {
@@ -30,5 +20,6 @@
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],
+        "@semantic-release/github"
     ]
 }
