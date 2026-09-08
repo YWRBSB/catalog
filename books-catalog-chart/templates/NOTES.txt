@@ -1,0 +1,2 @@
+Welcome to my CCT Django app! It's running on Kubernetes and is deployed using Helm. This app is a book catalog that allows users to browse and search for books. 
+The app is built using Django and uses a PostgreSQL database to store book information.
