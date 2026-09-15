@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 from .serializers import BookSerializer
 from .models import Book
 
@@ -24,5 +25,17 @@ class BookView(APIView):
         return Response(serializer.data, status=201)
 
 book_view = BookView.as_view()    
+
+
+class BookDetailView(APIView):
+    """Return a book by its ID."""
+
+    def get(self, request, pk, *args, **kwargs):
+        book = get_object_or_404(Book, pk=pk)
+        serializer = BookSerializer(book)
+        return Response(serializer.data)
+
+
+book_detail_view = BookDetailView.as_view()
     
         
