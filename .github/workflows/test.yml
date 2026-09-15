@@ -52,8 +52,8 @@ jobs:
       - checkmigrations
     if: github.ref == 'refs/heads/main'
     outputs:
-      new-release-published: ${{ steps.semantic.outputs.new_release_published }}
-      new-release-version: ${{ steps.semantic.outputs.new_release_version }}
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ steps.semantic.outputs.new_release_version }}
     permissions:
       contents: write
       issues: write
@@ -83,7 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - semantic-release
-    if: github.ref == 'refs/heads/main' && needs.semantic-release.outputs.new-release-published == 'true'
+    if: github.ref == 'refs/heads/main' && needs.semantic-release.outputs.new_release_published == 'true'
     permissions:
       contents: read
       packages: write
@@ -106,7 +106,7 @@ jobs:
         with:
           images: ghcr.io/ywrbsb/catalog
           tags: |
-            type=semver,pattern={{version}},value=v${{ needs.semantic-release.outputs.new-release-version }}
+            type=semver,pattern={{version}},value=v${{ needs.semantic-release.outputs.new_release_version }}
       
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -132,13 +132,7 @@ jobs:
         with:
           valueFile: 'envs/prod/values.yaml'
           propertyPath: 'image.tag'
-          value: ${{ needs.semantic-release.outputs.new-release-version }}
+          value: ${{ needs.semantic-release.outputs.new_release_version }}
           branch: main
           commitChange: true
-<<<<<<< HEAD
-          message: 'chore: Deploy Image Version ${{ needs.semantic-release.outputs.new-release-version }} to production [skip ci]'
-=======
-          message: 'chore: Deploy Image v: ${{ needs.semantic-release.outputs.new-release-version }} to production [skip ci]'
-
-
->>>>>>> f32b561 (fix: publish production image to ghcr)
+          message: 'chore: Deploy Image Version ${{ needs.semantic-release.outputs.new_release_version }} to production [skip ci]'
