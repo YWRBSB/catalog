@@ -4,7 +4,7 @@ metadata:
     name: {{ include "books-catalog-chart.fullname" . }}
     annotations:
       helm.sh/hook: pre-install, pre-upgrade
-      helm.sh/hook-wieght: "-1"
+      helm.sh/hook-weight: "-1"
    
     labels:
       {{- include "books-catalog-chart.labels" . | nindent 8 }}
@@ -12,4 +12,3 @@ data:
   {{- range .Values.environmentVariables }}
   {{ .name }}: "{{ .value }}"
   {{- end }}        
-

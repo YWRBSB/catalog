@@ -32,7 +32,6 @@ environmentVariables:
     value: books
   - name: DATABASE_HOST
     value: books-database-postgresql-0.books-database-postgresql-hl.default.svc.cluster.local
-  - name: DEVELOMENT_MODE
+  - name: DEVELOPMENT_MODE
     value: "false"  
-
 

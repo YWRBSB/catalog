@@ -104,7 +104,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/estebangarcia/devops-diploma-2025
+          images: ghcr.io/ywrbsb/catalog
           tags: |
             type=semver,pattern={{version}},value=v${{ needs.semantic-release.outputs.new-release-version }}
       
@@ -132,9 +132,7 @@ jobs:
         with:
           valueFile: 'envs/prod/values.yaml'
           propertyPath: 'image.tag'
-          value: v${{ needs.semantic-release.outputs.new-release-version }}
+          value: ${{ needs.semantic-release.outputs.new-release-version }}
           branch: main
           commitChange: true
           message: 'chore: Deploy Image Version ${{ needs.semantic-release.outputs.new-release-version }} to production [skip ci]'
-
-
