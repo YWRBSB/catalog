@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/YWRBSB/catalog/compare/v1.1.0...v1.2.0) (2026-09-15)
+
+### Features
+
+* Added detailed book endpoint ([5fd8db2](https://github.com/YWRBSB/catalog/commit/5fd8db24764916688cbcc04c53752ffc10b07c31))
+
 ## [1.1.0](https://github.com/YWRBSB/catalog/compare/v1.0.1...v1.1.0) (2026-09-15)
 
 ### Features
