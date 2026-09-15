@@ -135,4 +135,10 @@ jobs:
           value: ${{ needs.semantic-release.outputs.new-release-version }}
           branch: main
           commitChange: true
+<<<<<<< HEAD
           message: 'chore: Deploy Image Version ${{ needs.semantic-release.outputs.new-release-version }} to production [skip ci]'
+=======
+          message: 'chore: Deploy Image v: ${{ needs.semantic-release.outputs.new-release-version }} to production [skip ci]'
+
+
+>>>>>>> f32b561 (fix: publish production image to ghcr)
